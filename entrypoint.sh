@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-GAMEDIR="$HOME/steamapps/common/Empyrion - Dedicated Server/DedicatedServer"
+GAMEDIR="$HOME/empyrion/steamapps/common/Empyrion - Dedicated Server/DedicatedServer"
 
 cd "$HOME"
 STEAMCMD="./steamcmd/steamcmd.sh +@sSteamCmdForcePlatformType windows +login anonymous $STEAMCMD"
