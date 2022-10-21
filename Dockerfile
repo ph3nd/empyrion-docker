@@ -7,10 +7,7 @@ RUN export DEBIAN_FRONTEND noninteractive && \
     apt-get update && \
     apt-get install -y net-tools tar unzip curl xz-utils gnupg2 software-properties-common xvfb libc6:i386 locales && \
     echo en_US.UTF-8 UTF-8 >> /etc/locale.gen && locale-gen && \
-    curl -s https://dl.winehq.org/wine-builds/winehq.key | apt-key add - && \
-    apt-add-repository -y 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' && \
-    apt-get install -y wine-staging=5.7~focal wine-staging-i386=5.7~focal wine-staging-amd64=5.7~focal winetricks && \
-    rm -rf /var/lib/apt/lists/* && \
+    apt-get install -y wine wine32 wine64 libwine libwine:i386 fonts-wine && \
     ln -s '/home/steam/steamapps/common/Empyrion - Dedicated Server/' /server && \
     useradd -m user
 
