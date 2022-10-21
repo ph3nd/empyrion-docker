@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM steamcmd:latest
 
 RUN export DEBIAN_FRONTEND noninteractive && \
     dpkg --add-architecture i386 && \
@@ -7,15 +7,15 @@ RUN export DEBIAN_FRONTEND noninteractive && \
     echo en_US.UTF-8 UTF-8 >> /etc/locale.gen && locale-gen && \
     curl -s https://dl.winehq.org/wine-builds/winehq.key | apt-key add - && \
     apt-add-repository -y 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' && \
-    apt-get install -y steamcmd wine-staging=5.7~focal wine-staging-i386=5.7~focal wine-staging-amd64=5.7~focal winetricks && \
+    apt-get install -y wine-staging=5.7~focal wine-staging-i386=5.7~focal wine-staging-amd64=5.7~focal winetricks && \
     rm -rf /var/lib/apt/lists/* && \
-    ln -s '/home/user/Steam/steamapps/common/Empyrion - Dedicated Server/' /server && \
+    ln -s '/home/steam/steamapps/common/Empyrion - Dedicated Server/' /server && \
     useradd -m user
 
-USER user
-ENV HOME /home/user
-WORKDIR /home/user
-VOLUME /home/user/Steam
+USER steam
+ENV HOME /home/steam
+WORKDIR /home/steam
+VOLUME /home/steam
 
 # Get's killed at the end
 RUN ./steamcmd.sh +login anonymous +quit || :
