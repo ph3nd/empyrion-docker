@@ -1,4 +1,4 @@
-FROM steamcmd:latest
+FROM cm2network/steamcmd:latest
 
 RUN export DEBIAN_FRONTEND noninteractive && \
     dpkg --add-architecture i386 && \
